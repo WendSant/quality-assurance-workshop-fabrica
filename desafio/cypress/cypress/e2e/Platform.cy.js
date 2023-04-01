@@ -21,11 +21,11 @@ describe('Testando dentro da plataforma',()=>{
     //     cy.focused().type('{alt}{f4}')
     // });
 
-    it('Verificar mensagem de maximo caracteres np comentário',()=>{
+    it('Verificar mensagem de maximo caracteres no comentário',()=>{
         cy.get('input[formcontrolname="userName"]').type('weu1');
         cy.get('input[formcontrolname="password"]').type('123456789');
         cy.get('.btn').click();
-        cy.get(':nth-child(1) > a > ap-card > .card > .card-block > ap-photo > .img-thumbnail').click();
+        cy.get(':nth-child(1) > :nth-child(1) > a > ap-card > .card > .card-block > ap-photo > .img-thumbnail').click();
         cy.get('textarea[formcontrolname="comment"]').type("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         cy.contains('ap-vmessage', 'Maximun size allowed is 300').should('be.visible');
     });
@@ -35,7 +35,7 @@ describe('Testando dentro da plataforma',()=>{
         cy.get('input[formcontrolname="userName"]').type('weu1');
         cy.get('input[formcontrolname="password"]').type('123456789');
         cy.get('.btn').click();
-        cy.get(':nth-child(1) > a > ap-card > .card > .card-block > ap-photo > .img-thumbnail').click();
+        cy.get(':nth-child(1) > :nth-child(1) > a > ap-card > .card > .card-block > ap-photo > .img-thumbnail').click();
         cy.get('.fa-trash-o').click();
         cy.get('ap-alert > .text-center').should('contain', 'Photo removed');
     });
@@ -49,6 +49,13 @@ describe('Testando dentro da plataforma',()=>{
         cy.get('input[type="search"]').should('have.value', 'teste');
     });
 
+    it('Verificar se exibe comentários anteriores',()=>{
+        cy.get('input[formcontrolname="userName"]').type('weu1');
+        cy.get('input[formcontrolname="password"]').type('123456789');
+        cy.get('.btn').click();
+        cy.get(':nth-child(1) > :nth-child(1) > a > ap-card > .card > .card-block > ap-photo > .img-thumbnail').click();
+        cy.get('ap-photo-comments > :nth-child(1) > .list-unstyled > li').should('be.visible');
+    });
 
 
 
