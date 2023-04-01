@@ -30,7 +30,7 @@ describe('Registrar Usuario', () => {
     cy.contains('ap-vmessage', 'Mininum length is 2').should('be.visible');
   })
 
-  it.only('Verificar o maximo de caracteres no campo nome completo',() => {
+  it('Verificar o maximo de caracteres no campo nome completo',() => {
     cy.contains('a', 'Register now').click();
     cy.get('input[formcontrolname="fullName"]').type('utchormormesuphystensistiotaterselsebleth');
     cy.get('.text-center').click();
