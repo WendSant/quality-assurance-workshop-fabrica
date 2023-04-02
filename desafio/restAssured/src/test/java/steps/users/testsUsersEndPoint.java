@@ -18,7 +18,7 @@ public class testsUsersEndPoint {
     private String urlApi = "https://reqres.in/api";
 //    Start Verify user list--------------------------------
     @When("the user list is requested with GET request to {string}")
-    public void the_user_list_is_requested_with_GET_request_to(String endpoint) {
+    public void getUserList(String endpoint) {
         response = given()
                 .contentType("application/json")
                 .when()
@@ -26,12 +26,12 @@ public class testsUsersEndPoint {
     }
 
     @Then("the response status code should be {int}")
-    public void the_response_status_code_should_be(int statusCode) {
+    public void responseGetUserList(int statusCode) {
         Assert.assertEquals(response.statusCode(), statusCode);
     }
 
     @Then("the response should contain the user with email {string}")
-    public void the_response_should_contain_the_user_with_email(String email) {
+    public void shouldContainEmailgetUserList(String email) {
         boolean emailFound = response.jsonPath()
                 .getList("data.email")
                 .contains(email);
@@ -43,7 +43,7 @@ public class testsUsersEndPoint {
 
     // Start Verify user by id---------------------------------------------
     @When("get request user id {int}")
-    public void the_user_list_is_requested_with_GET_request_to_two(int id) {
+    public void getUserListById(int id) {
         response = given()
                 .contentType("application/json")
                 .when()
@@ -51,12 +51,12 @@ public class testsUsersEndPoint {
     }
 
     @Then("the response {int}")
-    public void the_response_status_code_should_be_two(int statusCode) {
+    public void responseGetUserListById(int statusCode) {
         Assert.assertEquals(response.statusCode(), statusCode);
     }
 
     @Then("the response should contain {string}")
-    public void the_response_should_contain_the_user_with_email_two(String email) {
+    public void shouldContainEmailgetUserListById(String email) {
         String actualEmail = response.jsonPath().getString("data.email");
         Assert.assertEquals(email, actualEmail);
     }
